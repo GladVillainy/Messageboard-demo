@@ -7,11 +7,16 @@
 <body>
 <h3> Registrer bruger </h3>
 
-<form method= "post" th.action = "@{/registrerbruger" >
-Username <input type = "text" name = "username">
-Password <input type = "password" name = "password">
+<form method="post" th:action="@{/registrerbruger}">
+    <!--
+    th:action sender form-dataen til /registrerbruger endpointet
+    method="post" bruges så username og password ikke vises i URL'en
+    -->
 
-<button type = "submit"> Registrer </button>
+    Username <input type="text" name="username">
+    Password <input type="password" name="password">
+
+    <button type="submit">Registrer</button>
 </form>
 
 </body>
