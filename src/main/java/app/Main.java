@@ -13,9 +13,13 @@ public class Main {
             config.staticFiles.add("/public");
             config.jetty.modifyServletContextHandler(handler -> handler.setSessionHandler(SessionConfig.sessionConfig()));
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
-        }).start(7070);
+        }).start(7070); //The port to connect to the site
 
-        // Routing
+        // Routing to the html index
+        //path = navn, filepath = html som den skal render
         app.get("/", ctx ->  ctx.render("index.html"));
+
+        app.get("/registrerbruger",ctx -> ctx.render("registrerbruger.html"));
+        app.post("/registrerbruger", (ctx -> ctx.render("index.html")));
     }
 }

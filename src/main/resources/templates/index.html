@@ -8,6 +8,11 @@
 
 <body>
 <h1>Welcome to the Javalin / Thymeleaf demo</h1>
-<p>This is your first web application in this world</p>
+
+
+
+<!-- you can use a href or th:href for links, using both in this example can be confusing,
+th:href handles Endpoint GET not found -->
+<a href = "registrerbruger" th:href="@{/registrerbruger}"> Opret bruger</a>
 </body>
 </html>
