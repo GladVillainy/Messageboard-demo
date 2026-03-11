@@ -6,8 +6,6 @@ import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
-import static app.Main.connectionPool;
-
 
 public class UserController {
 
@@ -18,6 +16,18 @@ public class UserController {
         app.get("/registrerbruger",ctx -> ctx.render("registrerbruger.html"));
         //post is when formed is submitted
         app.post("/registrerbruger", ctx -> registrerBruger(ctx, connectionPool));
+
+        app.post("/post", ctx -> ctx.render("post.html"));
+        app.get("/post", ctx -> ctx.render("post.html"));
+
+        app.get("/login", ctx -> ctx.render("login.html"));
+        app.post("/login", ctx -> loginBruger(ctx, connectionPool)); // <- denne mangler
+
+    }
+    private void loginBruger(Context ctx, ConnectionPool connectionPool) {
+        // valider mod databasen her
+        String username = ctx.formParam("username");
+        String password = ctx.formParam("password");
     }
     public void registrerBruger(Context ctx, ConnectionPool connectionPool){
         //gets data from form
