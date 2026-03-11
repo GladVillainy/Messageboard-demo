@@ -7,12 +7,14 @@
 </head>
 
 <body>
-<h1>Welcome to the Javalin / Thymeleaf demo</h1>
-
-
+<!-- Displays the useres username if locked in -->
+<h1 th:if="${session.currentUse}">
+<h1>Welcome <span th:text = "${session.currentUser.username}"></span></h1>
+</h1>
 
 <!-- you can use a href or th:href for links, using both in this example can be confusing,
 th:href handles Endpoint GET not found -->
 <a href = "registrerbruger" th:href="@{/registrerbruger}"> Opret bruger</a>
+<a th:href="@{/login}"> login</a>
 </body>
 </html>
