@@ -17,9 +17,9 @@ public class UserController {
         // is the link to register a user
         app.get("/registrerbruger",ctx -> ctx.render("registrerbruger.html"));
         //post is when formed is submitted
-        app.post("/registrerbruger", ctx -> registrerBruger(ctx));
+        app.post("/registrerbruger", ctx -> registrerBruger(ctx, connectionPool));
     }
-    public void registrerBruger(Context ctx){
+    public void registrerBruger(Context ctx, ConnectionPool connectionPool){
         //gets data from form
         String username = ctx.formParam("username");
         String password = ctx.formParam("password");
