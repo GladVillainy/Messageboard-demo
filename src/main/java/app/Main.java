@@ -33,6 +33,7 @@ public class Main {
         //method call for rendering user registerer (Controllers/UserController)
         UserController userController = new UserController();
         //Method addRoutes gets app, so UserController has access to javalin
+
         userController.addRoutes(app, connectionPool);
 
     }
