@@ -4,6 +4,7 @@ import app.config.SessionConfig;
 import app.config.ThymeleafConfig;
 import app.controllers.UserController;
 import app.persistence.ConnectionPool;
+import app.persistence.PostMapper;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
 
@@ -32,6 +33,7 @@ public class Main {
 
         //method call for rendering user registerer (Controllers/UserController)
         UserController userController = new UserController();
+        PostMapper postMapper = new PostMapper();
         //Method addRoutes gets app, so UserController has access to javalin
 
         userController.addRoutes(app, connectionPool);

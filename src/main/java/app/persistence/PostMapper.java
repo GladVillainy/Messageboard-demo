@@ -1,6 +1,7 @@
 package app.persistence;
 
 import app.entities.Post;
+import app.entities.User;
 import app.exceptions.DatabaseException;
 
 import java.sql.Connection;
@@ -13,6 +14,11 @@ import java.util.List;
 public class PostMapper {
 
     public static Post findPost(int id, ConnectionPool connectionPool) throws DatabaseException {
+
+        //if user is not logged in, cannot bypass with just typing /post in the url.
+        User user = ctx.sessionAttribute("currentUser");
+        if(user == null) {ctx.redirect("/login");}
+
         String sql = "select * from post where post_id=?";
 
         try (
